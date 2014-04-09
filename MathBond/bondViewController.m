@@ -20,7 +20,7 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
    //self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"numberBon
-    UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"numberBond.png"]];
+    UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"numberBond7.png"]];
     [self.view addSubview:imgView];
 }
 
