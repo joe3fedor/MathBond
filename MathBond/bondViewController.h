@@ -10,4 +10,11 @@
 
 @interface bondViewController : UIViewController
 
+//numbered like reading:  start at top then left to right.
+@property (weak, nonatomic) IBOutlet UITextField *One;
+@property (weak, nonatomic) IBOutlet UITextField *Two;
+@property (weak, nonatomic) IBOutlet UITextField *Three;
+
+-(IBAction)Go;
+
 @end
