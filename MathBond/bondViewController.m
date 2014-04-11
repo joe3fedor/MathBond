@@ -30,6 +30,9 @@ static bool first, second, third;
     max = 10;  //set the highest number to see on the screen.
     
     //NSLog(@"Random Number %d", [self choosePosition]);
+    
+    [self createNumberBond];
+    [self displayNumberBond];
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,6 +43,8 @@ static bool first, second, third;
 
 -(IBAction)Go
 {
+    [self createNumberBond];
+    [self displayNumberBond];
     
 }
 
@@ -64,10 +69,8 @@ static bool first, second, third;
 }
 
 //helper methods, not declared in .h file
--(int)getRandomNumber :(int)limit
+-(int)getRandomNumber :(int)upperBound :(int)lowerBound
 {
-    int lowerBound = 0;
-    int upperBound = limit;
     int rndValue = lowerBound + arc4random() % (upperBound - lowerBound);
     
     return rndValue;
@@ -88,8 +91,8 @@ static bool first, second, third;
     positionChosen = [self choosePosition];
     
     //set values
-    one = [self getRandomNumber:max];
-    two = [self getRandomNumber:one];
+    one = [self getRandomNumber:max:1];
+    two = [self getRandomNumber:one:0];
     three = one - two;
     
     switch (positionChosen)
@@ -119,7 +122,51 @@ static bool first, second, third;
             NSLog(@"Error: a value of %d was chosen as a position", positionChosen);
             break;
     }
+    NSLog(@"one %d", one);
+    NSLog(@"two %d", two);
+    NSLog(@"three %d", three);
 }
 
+-(void)displayNumberBond
+{
+    if(first)
+    {
+        self.One.text = @"";
+        self.One.enabled = YES;
+    }
+    else
+    {
+        NSString *strFromInt = [NSString stringWithFormat:@"%d",one];
+        self.One.text = strFromInt;
+        self.One.enabled = NO;
+
+    }
+    
+    if(second)
+    {
+        self.Two.text = @"";
+        self.Two.enabled = YES;
+    }
+    else
+    {
+        NSString *strFromInt = [NSString stringWithFormat:@"%d",two];
+        self.Two.text = strFromInt;
+        self.Two.enabled = NO;
+        
+    }
+    
+    if(third)
+    {
+        self.Three.text = @"";
+        self.Three.enabled = YES;
+    }
+    else
+    {
+        NSString *strFromInt = [NSString stringWithFormat:@"%d",three];
+        self.Three.text = strFromInt;
+        self.Three.enabled = NO;
+        
+    }
+}
 
 @end
