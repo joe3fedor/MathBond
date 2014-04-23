@@ -27,7 +27,7 @@ static bool first, second, third;
     UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"numberBond7.png"]];
     [self.view addSubview:imgView];
     
-    max = 10;  //set the highest number to see on the screen.
+    max = 12;  //set the highest number to see on the screen.
     
     //NSLog(@"Random Number %d", [self choosePosition]);
     
@@ -167,6 +167,147 @@ static bool first, second, third;
         self.Three.enabled = NO;
         
     }
+}
+
+-(id)validateIsNumber
+{
+    NSLog(@"validateIsNumber");
+    NSString *errorText = @"";
+    
+    BOOL valid;
+    NSCharacterSet *alphaNums = [NSCharacterSet decimalDigitCharacterSet];
+
+    if(first)
+    {
+        NSLog(@"self.One.text %@", self.One.text);
+        NSCharacterSet *inStringSet = [NSCharacterSet characterSetWithCharactersInString:self.One.text];
+        valid = [alphaNums isSupersetOfSet:inStringSet];
+        if (valid == NO)
+        {
+            
+            errorText = [errorText stringByAppendingString:@"Please enter a number 0 to \n"];
+            NSString *strFromInt = [NSString stringWithFormat:@"%d",max];
+            errorText = [errorText stringByAppendingString:strFromInt];
+        }
+    }
+    
+    if(second)
+    {
+        NSLog(@"self.Two.text %@", self.Two.text);
+        NSCharacterSet *inStringSet = [NSCharacterSet characterSetWithCharactersInString:self.Two.text];
+        valid = [alphaNums isSupersetOfSet:inStringSet];
+        if (valid == NO)
+        {
+            
+            errorText = [errorText stringByAppendingString:@"Please enter a number 0 to \n"];
+            NSString *strFromInt = [NSString stringWithFormat:@"%d",max];
+            errorText = [errorText stringByAppendingString:strFromInt];
+        }
+
+    }
+    
+    if(third)
+    {
+        NSLog(@"self.Three.text %@", self.Three.text);
+        NSCharacterSet *inStringSet = [NSCharacterSet characterSetWithCharactersInString:self.Three.text];
+        valid = [alphaNums isSupersetOfSet:inStringSet];
+        if (valid == NO)
+        {
+            
+            errorText = [errorText stringByAppendingString:@"Please enter a number 0 to \n"];
+            NSString *strFromInt = [NSString stringWithFormat:@"%d",max];
+            errorText = [errorText stringByAppendingString:strFromInt];
+        }
+
+    }
+    
+    NSLog(@"errorText %@", errorText);
+    return errorText;
+}
+
+
+-(id)validateIsEmpty
+{
+    NSLog(@"validateIsEmpty");
+    NSString *errorText = @"";
+    
+    if(first)
+    {
+        if (self.One.text && self.One.text.length > 0)
+        {
+            errorText = [errorText stringByAppendingString:@"Please enter a number 0 to \n"];
+            NSString *strFromInt = [NSString stringWithFormat:@"%d",max];
+            errorText = [errorText stringByAppendingString:strFromInt];
+        }
+    }
+    
+    if(second)
+    {
+        if (self.Two.text && self.Two.text.length > 0)
+        {
+            errorText = [errorText stringByAppendingString:@"Please enter a number 0 to \n"];
+            NSString *strFromInt = [NSString stringWithFormat:@"%d",max];
+            errorText = [errorText stringByAppendingString:strFromInt];
+        }
+    }
+    
+    if(third)
+    {
+        if (self.Three.text && self.Three.text.length > 0)
+        {
+            errorText = [errorText stringByAppendingString:@"Please enter a number 0 to \n"];
+            NSString *strFromInt = [NSString stringWithFormat:@"%d",max];
+            errorText = [errorText stringByAppendingString:strFromInt];
+        }
+    }
+    
+    NSLog(@"errorText %@", errorText);
+    return errorText;
+}
+
+-(id)validateIsIncorrectAnswer
+{
+    NSLog(@"validateIsIncorrectAnswer");
+    NSString *errorText = @"";
+    
+    if(first)
+    {
+        if([self.One.text intValue] > answer)
+        {
+            errorText = [errorText stringByAppendingString:@"Sorry that answer is too high.  Try again"];
+        }
+        if([self.One.text intValue] < answer)
+        {
+            errorText = [errorText stringByAppendingString:@"Sorry that answer is too low.  Try again"];
+        }
+    }
+    
+    if(second)
+    {
+        if([self.Two.text intValue] > answer)
+        {
+            errorText = [errorText stringByAppendingString:@"Sorry that answer is too high.  Try again"];
+        }
+        if([self.Two.text intValue] < answer)
+        {
+            errorText = [errorText stringByAppendingString:@"Sorry that answer is too low.  Try again"];
+        }
+    }
+    
+    if(third)
+    {
+        if([self.Three.text intValue] > answer)
+        {
+            errorText = [errorText stringByAppendingString:@"Sorry that answer is too high.  Try again"];
+        }
+        if([self.Three.text intValue] < answer)
+        {
+            errorText = [errorText stringByAppendingString:@"Sorry that answer is too low.  Try again"];
+        }
+    }
+    
+    NSLog(@"errorText %@", errorText);
+    return errorText;
 }
 
 @end
