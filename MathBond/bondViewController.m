@@ -26,7 +26,7 @@ static bool first, second, third;
     if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
         toInterfaceOrientation == UIInterfaceOrientationLandscapeRight)
     {
-        GoButton.frame = CGRectMake(750, 540, 94, 54);
+        GoButton.frame = CGRectMake(755, 395, 94, 54);
         NSLog(@"landscape");
     }
     else
@@ -99,7 +99,7 @@ static bool first, second, third;
 //helper methods, not declared in .h file
 -(int)getRandomNumber :(int)upperBound :(int)lowerBound
 {
-    int rndValue = lowerBound + arc4random() % (upperBound - lowerBound);
+    int rndValue = lowerBound + arc4random() % upperBound;
     
     return rndValue;
 }
@@ -108,7 +108,7 @@ static bool first, second, third;
 {
     int lowerBound = 1;
     int upperBound = 3;
-    int rndValue = lowerBound + arc4random() % (upperBound - lowerBound);
+    int rndValue = lowerBound + arc4random() % upperBound;
     
     return rndValue;
 }
