@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *One;
 @property (weak, nonatomic) IBOutlet UITextField *Two;
 @property (weak, nonatomic) IBOutlet UITextField *Three;
+@property (weak, nonatomic) IBOutlet UIButton *GoButton;
 
 -(IBAction)Go;
 

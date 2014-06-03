@@ -14,14 +14,42 @@
 
 @implementation bondViewController
 
-@synthesize One, Two, Three;
+@synthesize One, Two, Three, GoButton;
 static int max, one, two, three, answer;
 static bool first, second, third;
+
+//NOTE:  to get this to move "Simply uncheck "Use Autolayout" in the file inspector.."
+//      click on the button (or item to move) in the story board.  The "file inspector" is
+//      the first of the six small icons.  
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
+        toInterfaceOrientation == UIInterfaceOrientationLandscapeRight)
+    {
+        GoButton.frame = CGRectMake(750, 540, 94, 54);
+        NSLog(@"landscape");
+    }
+    else
+    {
+        GoButton.frame = CGRectMake(342, 830, 94, 54);
+        NSLog(@"portrait");
+    }
+}
+
+- (void)viewDidUnload {
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
+    self.GoButton = nil;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    CALayer *btnLayer = [GoButton layer];
+    [btnLayer setMasksToBounds:YES];
+    [btnLayer setCornerRadius:5.0f];
     
    //self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"numberBon
     UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"numberBond7.png"]];
