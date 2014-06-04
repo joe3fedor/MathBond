@@ -71,9 +71,28 @@ static bool first, second, third;
 
 -(IBAction)Go
 {
-    [self createNumberBond];
-    [self displayNumberBond];
+    [self compute];
+}
+
+-(void)compute
+{
+    NSString *dataCheck = [self validateIsEmpty];
+    NSLog(@"dataCheck3 %@ ", dataCheck);
     
+    if([dataCheck isEqualToString:@""])
+    {
+        [self createNumberBond];
+        [self displayNumberBond];
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Uh Oh!"
+                                                        message:dataCheck
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)theTextField
@@ -93,6 +112,7 @@ static bool first, second, third;
         [theTextField resignFirstResponder];
     }
     
+    [self compute];
     return YES;
 }
 
@@ -261,7 +281,7 @@ static bool first, second, third;
     
     if(first)
     {
-        if (self.One.text && self.One.text.length > 0)
+        if (self.One.text.length == 0)
         {
             errorText = [errorText stringByAppendingString:@"Please enter a number 0 to \n"];
             NSString *strFromInt = [NSString stringWithFormat:@"%d",max];
@@ -271,7 +291,7 @@ static bool first, second, third;
     
     if(second)
     {
-        if (self.Two.text && self.Two.text.length > 0)
+        if (self.Two.text.length == 0)
         {
             errorText = [errorText stringByAppendingString:@"Please enter a number 0 to \n"];
             NSString *strFromInt = [NSString stringWithFormat:@"%d",max];
@@ -281,7 +301,7 @@ static bool first, second, third;
     
     if(third)
     {
-        if (self.Three.text && self.Three.text.length > 0)
+        if (self.Three.text.length == 0)
         {
             errorText = [errorText stringByAppendingString:@"Please enter a number 0 to \n"];
             NSString *strFromInt = [NSString stringWithFormat:@"%d",max];
