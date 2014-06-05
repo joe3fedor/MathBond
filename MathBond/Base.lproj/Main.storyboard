@@ -39,19 +39,6 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="wzq-VA-tHx"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="YtH-y7-Ctk">
-                                <rect key="frame" x="342" y="830" width="94" height="54"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.4505900592" green="1" blue="0.1070708573" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                <state key="normal" title="Go">
-                                    <color key="titleColor" red="0.94949473510000004" green="0.94949473510000004" blue="0.94949473510000004" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="Go" destination="BYZ-38-t0r" eventType="touchUpInside" id="qrf-Vl-OFb"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Complete the Number Bond below" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GGh-51-sUj">
                                 <rect key="frame" x="144" y="71" width="480" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -63,7 +50,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="GoButton" destination="YtH-y7-Ctk" id="s1S-C5-ESZ"/>
                         <outlet property="One" destination="wIP-2H-mPy" id="6K0-OI-ZgI"/>
                         <outlet property="Three" destination="ZZL-3D-nXC" id="Lbk-SR-779"/>
                         <outlet property="Two" destination="z8u-WJ-Mmk" id="dpV-t9-n2P"/>

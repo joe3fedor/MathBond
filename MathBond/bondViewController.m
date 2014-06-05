@@ -14,42 +14,20 @@
 
 @implementation bondViewController
 
-@synthesize One, Two, Three, GoButton;
+@synthesize One, Two, Three;
 static int max, one, two, three, answer;
 static bool first, second, third;
 
-//NOTE:  to get this to move "Simply uncheck "Use Autolayout" in the file inspector.."
-//      click on the button (or item to move) in the story board.  The "file inspector" is
-//      the first of the six small icons.  
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
-{
-    if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
-        toInterfaceOrientation == UIInterfaceOrientationLandscapeRight)
-    {
-        GoButton.frame = CGRectMake(755, 395, 94, 54);
-        NSLog(@"landscape");
-    }
-    else
-    {
-        GoButton.frame = CGRectMake(342, 830, 94, 54);
-        NSLog(@"portrait");
-    }
-}
 
 - (void)viewDidUnload {
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
-    self.GoButton = nil;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    
-    CALayer *btnLayer = [GoButton layer];
-    [btnLayer setMasksToBounds:YES];
-    [btnLayer setCornerRadius:5.0f];
     
    //self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"numberBon
     UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"numberBond7.png"]];
@@ -81,8 +59,45 @@ static bool first, second, third;
     
     if([dataCheck isEqualToString:@""])
     {
-        [self createNumberBond];
-        [self displayNumberBond];
+        dataCheck = [self validateIsNumber];
+        NSLog(@"dataCheck3 %@ ", dataCheck);
+        
+        if([dataCheck isEqualToString:@""])
+        {
+            dataCheck = [self validateIsIncorrectAnswer];
+            NSLog(@"dataCheck3 %@ ", dataCheck);
+            
+            if([dataCheck isEqualToString:@""])
+            {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"CONGRATULATIONS!"
+                                                                message:@"Your answer is correct!"
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil];
+                [alert show];
+                
+                [self createNumberBond];
+                [self displayNumberBond];
+            }
+            else
+            {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Close!"
+                                                                message:dataCheck
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil];
+                [alert show];
+            }
+        }
+        else
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Uh Oh!"
+                                                            message:dataCheck
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+        }
     }
     else
     {
