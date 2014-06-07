@@ -33,7 +33,7 @@ static bool first, second, third;
     UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"numberBond7.png"]];
     [self.view addSubview:imgView];
     
-    max = 12;  //set the highest number to see on the screen.
+    max = 10;  //set the highest number to see on the screen.
     
     //NSLog(@"Random Number %d", [self choosePosition]);
     
@@ -69,8 +69,8 @@ static bool first, second, third;
             
             if([dataCheck isEqualToString:@""])
             {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"CONGRATULATIONS!"
-                                                                message:@"Your answer is correct!"
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"GOOD JOB!"
+                                                                message:[NSString stringWithFormat:@"%d + %d = %d is correct!", two, three, one]
                                                                delegate:nil
                                                       cancelButtonTitle:@"OK"
                                                       otherButtonTitles:nil];
@@ -196,12 +196,14 @@ static bool first, second, third;
     {
         self.One.text = @"";
         self.One.enabled = YES;
+        self.One.backgroundColor = [UIColor yellowColor];
     }
     else
     {
         NSString *strFromInt = [NSString stringWithFormat:@"%d",one];
         self.One.text = strFromInt;
         self.One.enabled = NO;
+        self.One.backgroundColor = [UIColor whiteColor];
 
     }
     
@@ -209,12 +211,14 @@ static bool first, second, third;
     {
         self.Two.text = @"";
         self.Two.enabled = YES;
+        self.Two.backgroundColor = [UIColor yellowColor];
     }
     else
     {
         NSString *strFromInt = [NSString stringWithFormat:@"%d",two];
         self.Two.text = strFromInt;
         self.Two.enabled = NO;
+        self.Two.backgroundColor = [UIColor whiteColor];
         
     }
     
@@ -222,12 +226,14 @@ static bool first, second, third;
     {
         self.Three.text = @"";
         self.Three.enabled = YES;
+        self.Three.backgroundColor = [UIColor yellowColor];
     }
     else
     {
         NSString *strFromInt = [NSString stringWithFormat:@"%d",three];
         self.Three.text = strFromInt;
         self.Three.enabled = NO;
+        self.Three.backgroundColor = [UIColor whiteColor];
         
     }
 }
